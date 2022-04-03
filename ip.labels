@@ -1,0 +1,7 @@
+#Save labels for any ip here
+#Format: [ip][\t or ' '][Label (max 27 chars)]
+
+#               V        Label Range       V (If tab==6 spaces)
+192.168.1.1	Router
+1.1.1.1		Cloud Flare DNS
+8.8.8.8		Google DNS
