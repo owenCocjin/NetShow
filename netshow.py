@@ -6,7 +6,7 @@
 ## To-Do:
 ##  - Re-draw graph when rescaling the terminal
 ## Issues:
-import threading,time,os
+import threading,time,os,socket,fcntl,struct
 import network,menuentries,misc,globe,rawinput
 from grid import Grid,Unit
 from draw import drawIp
@@ -73,18 +73,13 @@ def main():
 	grid.nnotify(f"My IP:  \033[45m---.---.---.---",colour='\033[44m')  #This needs to be updated once we know who we are
 	grid.nnotify("Press [ctrl+c] to exit")
 
-	users_ip=None
-	while not users_ip:
-		#Get our IP from the first packet (kinda hacky but should work?)
-		buff,cli=listener.recvfrom(65535)
-		frame=network.parsePacket(buff)
-		if frame.src_mac==users_mac:
-			users_ip=frame.upper.src_ip
-		elif frame.dst_mac==users_mac:
-			users_ip=frame.upper.dst_ip
-		else:  #Can't identify our ip, close (Just for testing!)
-			continue
-	grid.notify("Found IP!")
+	#Determine our IP
+	users_ip=socket.inet_ntoa(fcntl.ioctl(
+		listener.fileno(),
+		0x8915,  #SIOCGIFADDR
+		struct.pack("256s",listener.getsockname()[0][:15].encode())
+	)[20:24])
+
 	grid.notify(f"My IP:  \033[45m{users_ip}",colour='\033[44m',line=2)
 	addNewIp(users_ip)
 	#Set colour before drawing
