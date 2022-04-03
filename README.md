@@ -2,6 +2,8 @@
 > Easy way to visualize network traffic
 
 ---
+#Installation:
+**!!Warning!!** This repo uses submodules! Use `git clone --recurse-submodules https://github.com/owenCocjin/NetShow.git` to clone! If you didn't get the submodule when cloning, run `git submodule init; git submodule update`
 
 ## Usage:
 Run `./netshow.py [interface]` as root. Root is required to open a raw socket.
@@ -32,4 +34,6 @@ new2 = 192.168.250.100/24  <- This only shares subnet /16 and should be assigned
 - ~~**[bug:006]:** Current method of determining IP can result in incorrect IP being determined as user's~~  Solved by getting IP through IOCTL
 
 ## Future Additions:
-- Add multiple pages once grid is full of IPs. Currently, any more IPs will be ignored
+- **[future:001]:** Add multiple pages once grid is full of IPs. Currently, any more IPs will be ignored
+- **[future:002]:** Add an ignore/blacklist to ignore some IPs. This issue comes from using the tool remotely, where your IP will rapidly increase due to the constant SSH connection.
+- **[future:003]:** Add list of ports for each IP. Most likely as a toggelable column.
