@@ -17,8 +17,8 @@ Run `./netshow.py [interface]` as root. Root is required to open a raw socket.
 	- To cancel, press [enter] without typing anything
 
 ## Known Bugs:
-- [bug:001]: While typing a label name, the user can use the arrow keys to move around. Doing so will enter the chars '[A' into the label name
-- [bug:002]: Once an IP is assigned a subnet, all IPs that share ANY subnet with the original one will gain the ORIGINAL's ip. Ex:
+- **[bug:001]:** While typing a label name, the user can use the arrow keys to move around. Doing so will enter the chars '[A' into the label name
+- **[bug:002]:** Once an IP is assigned a subnet, all IPs that share ANY subnet with the original one will gain the ORIGINAL's ip. Ex:
 
 ```
 orig = 192.168.0.10/24
