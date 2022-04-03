@@ -15,7 +15,7 @@ LABEL_COLOUR="1;45"  #Bold;Purple | Follows ANSI code
 #------------#
 #    Grid    #
 #------------#
-UNIT_SIZE=7  #Size of a single column. The Label column is 3x this size
+UNIT_SIZE=9  #Do not touch!
 can_draw=True  #Tells the listener it's allowed to draw on the screen
 toggle_labels=True  #Do not touch!
 
